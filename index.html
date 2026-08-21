@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oshuny Caribbean Catering</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    Weekend Pre-Orders Only • Orders close Thursday at 8 PM • Saturday Delivery Available
+  </div>
+
+  <!-- NAV -->
+  <header class="navbar">
+    <div class="logo-wrap">
+      <div class="logo-text">
+        <h1>Oshuny</h1>
+        <span>Caribbean Catering</span>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#order">Pre-Order</a>
+      <a href="#delivery">Delivery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a href="#order" class="nav-btn">Order Now</a>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <p class="hero-badge">WEEKEND SERVICE • MONTREAL</p>
+
+      <h2>
+        Every Plate Tells a<br />
+        <span>Caribbean Story</span>
+      </h2>
+
+      <p class="hero-text">
+        Hot, fresh, and made with love. Authentic Caribbean food for your weekend.
+        Pre-order your favorite plates and choose pickup, delivery, or meet halfway.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#menu" class="gold-btn">See Weekend Menu</a>
+        <a href="#order" class="outline-btn">Book for Weekend</a>
+      </div>
+
+      <div class="hero-info">
+        <span>Pre-Orders close Thursday at 8 PM</span>
+        <span>Saturday service: 2 PM – 6 PM</span>
+        <span>Delivery available</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED MENU -->
+  <section class="featured-section" id="menu">
+    <div class="section-header">
+      <span>OUR WEEKEND MENU</span>
+      <h2>Island Favorites</h2>
+      <p>
+        Freshly prepared for the weekend. Click any item below to add it to your order.
+      </p>
+    </div>
+
+    <div class="featured-card">
+      <div class="featured-image">
+        <img src="Images/jerk.png" alt="Jerk Chicken" />
+      </div>
+
+      <div class="featured-details">
+        <span class="featured-tag">HOUSE FAVORITE</span>
+        <h3>Jerk Chicken Plate</h3>
+        <p>
+          Flame-kissed jerk chicken served with rice & peas and sweet plantain.
+          Bold flavor, authentic spice, and a real Caribbean weekend staple.
+        </p>
+
+        <div class="featured-bottom">
+          <strong>$20</strong>
+          <button type="button" onclick="addToOrder('Jerk Chicken Plate', 20)">
+            Book for Weekend
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-grid">
+      <article class="menu-card">
+        <img src="Images/ackee.png" alt="Ackee and Saltfish" />
+        <div class="menu-card-body">
+          <h3>Ackee & Saltfish Plate</h3>
+          <p>Traditional Jamaican ackee and saltfish with island seasoning.</p>
+          <div class="menu-card-bottom">
+            <strong>$20</strong>
+            <button type="button" onclick="addToOrder('Ackee & Saltfish Plate', 20)">Add</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card">
+        <img src="Images/oxtail.png" alt="Oxtail Plate" />
+        <div class="menu-card-body">
+          <h3>Oxtail Plate</h3>
+          <p>Slow-braised oxtail in rich gravy, full of deep Caribbean flavor.</p>
+          <div class="menu-card-bottom">
+            <strong>$25</strong>
+            <button type="button" onclick="addToOrder('Oxtail Plate', 25)">Add</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card">
+        <img src="Images/rice-peas.png" alt="Rice and Peas" />
+        <div class="menu-card-body">
+          <h3>Rice & Peas</h3>
+          <p>Traditional Caribbean rice and kidney beans, perfectly seasoned.</p>
+          <div class="menu-card-bottom">
+            <strong>$7</strong>
+            <button type="button" onclick="addToOrder('Rice & Peas', 7)">Add</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card">
+        <img src="Images/plantain.png" alt="Sweet Plantain" />
+        <div class="menu-card-body">
+          <h3>Sweet Plantain</h3>
+          <p>Golden fried ripe plantain, caramelized and sweet.</p>
+          <div class="menu-card-bottom">
+            <strong>$6</strong>
+            <button type="button" onclick="addToOrder('Sweet Plantain', 6)">Add</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- DELIVERY / SERVICE INFO -->
+  <section class="delivery-section" id="delivery">
+    <div class="delivery-box">
+      <h2>How Weekend Ordering Works</h2>
+
+      <div class="delivery-grid">
+        <div class="delivery-card">
+          <h3>1. Pre-Order</h3>
+          <p>Place your order before Thursday at 8 PM.</p>
+        </div>
+
+        <div class="delivery-card">
+          <h3>2. We Prepare</h3>
+          <p>We cook fresh for the weekend in scheduled batches.</p>
+        </div>
+
+        <div class="delivery-card">
+          <h3>3. Receive Your Food</h3>
+          <p>Choose pickup, delivery, or meet halfway.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER SECTION -->
+  <section class="order-section" id="order">
+    <div class="section-header">
+      <span>BOOK YOUR ORDER</span>
+      <h2>Weekend Pre-Order</h2>
+      <p>
+        Add your food to the cart, then submit your details below.
+      </p>
+    </div>
+
+    <div class="order-layout">
+      <div class="order-form-container">
+        <form id="orderForm">
+          <div class="form-group">
+            <label for="customerName">Full Name</label>
+            <input type="text" id="customerName" placeholder="Your full name" required />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" placeholder="514-000-0000" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="you@example.com" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Fulfillment Method</label>
+            <div class="fulfillment-grid">
+              <label class="fulfillment-card">
+                <input type="radio" name="fulfillment" value="Pickup" checked />
+                <strong>Pickup</strong>
+                <span>You pick up the order</span>
+              </label>
+
+              <label class="fulfillment-card">
+                <input type="radio" name="fulfillment" value="Delivery" />
+                <strong>Delivery</strong>
+                <span>Saturday delivery available</span>
+              </label>
+
+              <label class="fulfillment-card">
+                <input type="radio" name="fulfillment" value="Meet Halfway" />
+                <strong>Meet Halfway</strong>
+                <span>Arrange a midpoint</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Delivery Address / Meeting Area</label>
+            <input type="text" id="address" placeholder="Enter address or meeting area" />
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Special Instructions</label>
+            <textarea id="notes" rows="5" placeholder="Special requests, notes, allergies..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-order">Submit Weekend Order</button>
+        </form>
+      </div>
+
+      <aside class="cart-box">
+        <div class="cart-heading">
+          <span>YOUR WEEKEND ORDER</span>
+          <h2>Your Cart</h2>
+        </div>
+
+        <div id="cartItems">
+          <p class="empty-cart">Your order is currently empty.</p>
+        </div>
+
+        <div class="cart-total">
+          <span>ORDER TOTAL</span>
+          <strong id="cartTotal">$0.00</strong>
+        </div>
+
+        <div class="cart-notice">
+          <strong>Important:</strong>
+          <p>
+            This is a weekend service. Orders close Thursday at 8 PM and are fulfilled Saturday.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <h2>Oshuny Caribbean Catering</h2>
+    <p>Weekend Pre-Orders • Delivery • Pickup • Meet Halfway</p>
+
+    <div class="contact-links">
+      <a href="tel:5142957170">514-295-7170</a>
+      <a href="https://www.instagram.com/oshuny.catering" target="_blank">@oshuny.catering</a>
+      <a href="https://www.oshunycatering.com" target="_blank">www.oshunycatering.com</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Oshuny Caribbean Catering • Authentic flavors. Made with love.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
