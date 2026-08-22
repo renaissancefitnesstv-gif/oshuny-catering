@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Oshuny Caribbean Catering</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <!-- TOP BAR -->
   <div class="top-bar">
-    Weekend Pre-Orders Only • Orders close Thursday at 8 PM • Saturday Delivery Available
+    Weekend Pre-Orders Only • Orders Close Thursday at 8 PM • Saturday Delivery $8–$15
   </div>
 
-  <!-- NAV -->
+
+  <!-- NAVIGATION -->
   <header class="navbar">
-    <div class="logo-wrap">
-      <div class="logo-text">
-        <h1>Oshuny</h1>
-        <span>Caribbean Catering</span>
-      </div>
+
+    <div class="logo-text">
+      <h1>Oshuny</h1>
+      <span>Caribbean Catering</span>
     </div>
 
     <nav>
@@ -30,254 +34,724 @@
       <a href="#contact">Contact</a>
     </nav>
 
-    <a href="#order" class="nav-btn">Order Now</a>
+    <a href="#menu" class="nav-btn">
+      Order Now
+    </a>
+
   </header>
+
 
   <!-- HERO -->
   <section class="hero" id="home">
+
     <div class="hero-overlay"></div>
 
     <div class="hero-content">
-      <p class="hero-badge">WEEKEND SERVICE • MONTREAL</p>
+
+      <p class="hero-badge">
+        WEEKEND CARIBBEAN SERVICE • MONTRÉAL
+      </p>
 
       <h2>
-        Every Plate Tells a<br />
+        Every Plate Tells a<br>
         <span>Caribbean Story</span>
       </h2>
 
       <p class="hero-text">
-        Hot, fresh, and made with love. Authentic Caribbean food for your weekend.
-        Pre-order your favorite plates and choose pickup, delivery, or meet halfway.
+        Authentic Caribbean food prepared fresh for your weekend.
+        Choose your plate size, place your pre-order, and select
+        pickup, delivery, or meet halfway.
       </p>
 
       <div class="hero-buttons">
-        <a href="#menu" class="gold-btn">See Weekend Menu</a>
-        <a href="#order" class="outline-btn">Book for Weekend</a>
+
+        <a href="#menu" class="gold-btn">
+          View Weekend Menu
+        </a>
+
+        <a href="#order" class="outline-btn">
+          My Order
+        </a>
+
       </div>
 
       <div class="hero-info">
-        <span>Pre-Orders close Thursday at 8 PM</span>
-        <span>Saturday service: 2 PM – 6 PM</span>
-        <span>Delivery available</span>
+        <span>Orders close Thursday at 8 PM</span>
+        <span>Saturday service: 12 PM – 10 PM</span>
+        <span>Delivery: $8–$15</span>
       </div>
+
     </div>
+
   </section>
 
-  <!-- FEATURED MENU -->
+
+  <!-- MENU -->
   <section class="featured-section" id="menu">
+
     <div class="section-header">
+
       <span>OUR WEEKEND MENU</span>
-      <h2>Island Favorites</h2>
+
+      <h2>Choose Your Plate</h2>
+
       <p>
-        Freshly prepared for the weekend. Click any item below to add it to your order.
+        Select Medium or Large and add your meal to the weekend order.
       </p>
+
     </div>
 
-    <div class="featured-card">
-      <div class="featured-image">
-        <img src="Images/jerk.png" alt="Jerk Chicken" />
-      </div>
-
-      <div class="featured-details">
-        <span class="featured-tag">HOUSE FAVORITE</span>
-        <h3>Jerk Chicken Plate</h3>
-        <p>
-          Flame-kissed jerk chicken served with rice & peas and sweet plantain.
-          Bold flavor, authentic spice, and a real Caribbean weekend staple.
-        </p>
-
-        <div class="featured-bottom">
-          <strong>$20</strong>
-          <button type="button" onclick="addToOrder('Jerk Chicken Plate', 20)">
-            Book for Weekend
-          </button>
-        </div>
-      </div>
-    </div>
 
     <div class="menu-grid">
+
+
+      <!-- CURRY CHICKEN -->
       <article class="menu-card">
-        <img src="Images/ackee.png" alt="Ackee and Saltfish" />
+
+        <img
+          src="Images/curry.png"
+          alt="Curry Chicken"
+        >
+
         <div class="menu-card-body">
-          <h3>Ackee & Saltfish Plate</h3>
-          <p>Traditional Jamaican ackee and saltfish with island seasoning.</p>
-          <div class="menu-card-bottom">
-            <strong>$20</strong>
-            <button type="button" onclick="addToOrder('Ackee & Saltfish Plate', 20)">Add</button>
+
+          <h3>Curry Chicken</h3>
+
+          <p>
+            Caribbean curry chicken served with
+            white rice and 2 sweet plantains.
+          </p>
+
+          <div class="size-prices">
+            <span>Medium <strong>$15</strong></span>
+            <span>Large <strong>$20</strong></span>
           </div>
+
+          <div class="size-buttons">
+
+            <button
+              onclick="addToOrder('Curry Chicken - Medium', 15)"
+            >
+              Medium $15
+            </button>
+
+            <button
+              onclick="addToOrder('Curry Chicken - Large', 20)"
+            >
+              Large $20
+            </button>
+
+          </div>
+
         </div>
+
       </article>
 
+
+      <!-- JERK CHICKEN -->
       <article class="menu-card">
-        <img src="Images/oxtail.png" alt="Oxtail Plate" />
+
+        <img
+          src="Images/jerk.png"
+          alt="Jerk Chicken"
+        >
+
         <div class="menu-card-body">
-          <h3>Oxtail Plate</h3>
-          <p>Slow-braised oxtail in rich gravy, full of deep Caribbean flavor.</p>
-          <div class="menu-card-bottom">
-            <strong>$25</strong>
-            <button type="button" onclick="addToOrder('Oxtail Plate', 25)">Add</button>
+
+          <h3>Jerk Chicken</h3>
+
+          <p>
+            Authentic jerk chicken served with
+            rice & peas and 2 sweet plantains.
+          </p>
+
+          <div class="size-prices">
+            <span>Medium <strong>$17</strong></span>
+            <span>Large <strong>$20</strong></span>
           </div>
+
+          <div class="size-buttons">
+
+            <button
+              onclick="addToOrder('Jerk Chicken - Medium', 17)"
+            >
+              Medium $17
+            </button>
+
+            <button
+              onclick="addToOrder('Jerk Chicken - Large', 20)"
+            >
+              Large $20
+            </button>
+
+          </div>
+
         </div>
+
       </article>
 
+
+      <!-- OXTAIL -->
       <article class="menu-card">
-        <img src="Images/rice-peas.png" alt="Rice and Peas" />
+
+        <img
+          src="Images/oxtail.png"
+          alt="Oxtail"
+        >
+
         <div class="menu-card-body">
-          <h3>Rice & Peas</h3>
-          <p>Traditional Caribbean rice and kidney beans, perfectly seasoned.</p>
-          <div class="menu-card-bottom">
-            <strong>$7</strong>
-            <button type="button" onclick="addToOrder('Rice & Peas', 7)">Add</button>
+
+          <h3>Oxtail</h3>
+
+          <p>
+            Slow-braised Caribbean oxtail with
+            white rice or rice & peas and 2 plantains.
+          </p>
+
+          <div class="size-prices">
+            <span>Medium <strong>$18</strong></span>
+            <span>Large <strong>$25</strong></span>
           </div>
+
+          <label class="rice-label" for="oxtailRice">
+            Choose Rice
+          </label>
+
+          <select id="oxtailRice" class="rice-select">
+            <option value="White Rice">
+              White Rice
+            </option>
+
+            <option value="Rice & Peas">
+              Rice & Peas
+            </option>
+          </select>
+
+          <div class="size-buttons">
+
+            <button onclick="addOxtail('Medium', 18)">
+              Medium $18
+            </button>
+
+            <button onclick="addOxtail('Large', 25)">
+              Large $25
+            </button>
+
+          </div>
+
         </div>
+
       </article>
 
+
+      <!-- ACKEE -->
       <article class="menu-card">
-        <img src="Images/plantain.png" alt="Sweet Plantain" />
+
+        <img
+          src="Images/ackee.png"
+          alt="Ackee and Saltfish"
+        >
+
         <div class="menu-card-body">
-          <h3>Sweet Plantain</h3>
-          <p>Golden fried ripe plantain, caramelized and sweet.</p>
-          <div class="menu-card-bottom">
-            <strong>$6</strong>
-            <button type="button" onclick="addToOrder('Sweet Plantain', 6)">Add</button>
+
+          <h3>Ackee & Saltfish</h3>
+
+          <p>
+            Traditional Jamaican ackee and saltfish
+            served with white rice and plantains.
+          </p>
+
+          <div class="size-prices">
+            <span>Medium <strong>$17</strong></span>
+            <span>Large <strong>$21</strong></span>
           </div>
+
+          <div class="size-buttons">
+
+            <button
+              onclick="addToOrder('Ackee & Saltfish - Medium', 17)"
+            >
+              Medium $17
+            </button>
+
+            <button
+              onclick="addToOrder('Ackee & Saltfish - Large', 21)"
+            >
+              Large $21
+            </button>
+
+          </div>
+
         </div>
+
       </article>
+
+
+      <!-- FESTIVALS -->
+      <article class="menu-card">
+
+        <img
+          src="Images/festival.png"
+          alt="Jamaican Festivals"
+        >
+
+        <div class="menu-card-body">
+
+          <h3>Jamaican Festivals</h3>
+
+          <p>
+            Sweet Jamaican fried festival.
+            Perfect as an extra side with your meal.
+          </p>
+
+          <div class="size-prices">
+            <span>Order <strong>$5</strong></span>
+          </div>
+
+          <div class="size-buttons">
+
+            <button
+              onclick="addToOrder('Jamaican Festivals', 5)"
+            >
+              Add $5
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- EXTRA RICE -->
+      <article class="menu-card">
+
+        <img
+          src="Images/rice-peas.png"
+          alt="Rice and Peas"
+        >
+
+        <div class="menu-card-body">
+
+          <h3>Extra Rice & Peas</h3>
+
+          <p>
+            Traditional Jamaican rice & peas
+            available as an additional side.
+          </p>
+
+          <div class="size-prices">
+            <span>Side <strong>$7</strong></span>
+          </div>
+
+          <div class="size-buttons">
+
+            <button
+              onclick="addToOrder('Extra Rice & Peas', 7)"
+            >
+              Add $7
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
     </div>
+
   </section>
 
-  <!-- DELIVERY / SERVICE INFO -->
+
+  <!-- DELIVERY INFORMATION -->
   <section class="delivery-section" id="delivery">
+
     <div class="delivery-box">
-      <h2>How Weekend Ordering Works</h2>
+
+      <h2>Weekend Delivery</h2>
 
       <div class="delivery-grid">
-        <div class="delivery-card">
-          <h3>1. Pre-Order</h3>
-          <p>Place your order before Thursday at 8 PM.</p>
-        </div>
 
         <div class="delivery-card">
-          <h3>2. We Prepare</h3>
-          <p>We cook fresh for the weekend in scheduled batches.</p>
-        </div>
-
-        <div class="delivery-card">
-          <h3>3. Receive Your Food</h3>
-          <p>Choose pickup, delivery, or meet halfway.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ORDER SECTION -->
-  <section class="order-section" id="order">
-    <div class="section-header">
-      <span>BOOK YOUR ORDER</span>
-      <h2>Weekend Pre-Order</h2>
-      <p>
-        Add your food to the cart, then submit your details below.
-      </p>
-    </div>
-
-    <div class="order-layout">
-      <div class="order-form-container">
-        <form id="orderForm">
-          <div class="form-group">
-            <label for="customerName">Full Name</label>
-            <input type="text" id="customerName" placeholder="Your full name" required />
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" placeholder="514-000-0000" required />
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" placeholder="you@example.com" />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label>Fulfillment Method</label>
-            <div class="fulfillment-grid">
-              <label class="fulfillment-card">
-                <input type="radio" name="fulfillment" value="Pickup" checked />
-                <strong>Pickup</strong>
-                <span>You pick up the order</span>
-              </label>
-
-              <label class="fulfillment-card">
-                <input type="radio" name="fulfillment" value="Delivery" />
-                <strong>Delivery</strong>
-                <span>Saturday delivery available</span>
-              </label>
-
-              <label class="fulfillment-card">
-                <input type="radio" name="fulfillment" value="Meet Halfway" />
-                <strong>Meet Halfway</strong>
-                <span>Arrange a midpoint</span>
-              </label>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="address">Delivery Address / Meeting Area</label>
-            <input type="text" id="address" placeholder="Enter address or meeting area" />
-          </div>
-
-          <div class="form-group">
-            <label for="notes">Special Instructions</label>
-            <textarea id="notes" rows="5" placeholder="Special requests, notes, allergies..."></textarea>
-          </div>
-
-          <button type="submit" class="submit-order">Submit Weekend Order</button>
-        </form>
-      </div>
-
-      <aside class="cart-box">
-        <div class="cart-heading">
-          <span>YOUR WEEKEND ORDER</span>
-          <h2>Your Cart</h2>
-        </div>
-
-        <div id="cartItems">
-          <p class="empty-cart">Your order is currently empty.</p>
-        </div>
-
-        <div class="cart-total">
-          <span>ORDER TOTAL</span>
-          <strong id="cartTotal">$0.00</strong>
-        </div>
-
-        <div class="cart-notice">
-          <strong>Important:</strong>
+          <h3>Pickup</h3>
           <p>
-            This is a weekend service. Orders close Thursday at 8 PM and are fulfilled Saturday.
+            Pickup is free. Your pickup details
+            will be confirmed with your order.
           </p>
         </div>
-      </aside>
+
+        <div class="delivery-card">
+          <h3>Delivery</h3>
+          <p>
+            Saturday delivery is available.
+            Delivery fees range from
+            <strong>$8 to $15</strong>
+            depending on distance.
+          </p>
+        </div>
+
+        <div class="delivery-card">
+          <h3>Meet Halfway</h3>
+          <p>
+            A convenient halfway meeting location
+            can be arranged when appropriate.
+          </p>
+        </div>
+
+      </div>
+
     </div>
+
   </section>
+
+
+  <!-- ORDER -->
+  <section class="order-section" id="order">
+
+    <div class="section-header">
+
+      <span>COMPLETE YOUR ORDER</span>
+
+      <h2>Weekend Pre-Order</h2>
+
+      <p>
+        Review your cart and enter your contact information.
+      </p>
+
+    </div>
+
+
+    <div class="order-layout">
+
+
+      <!-- FORM -->
+      <div class="order-form-container">
+
+        <form id="orderForm">
+
+
+          <div class="form-group">
+
+            <label for="customerName">
+              Full Name
+            </label>
+
+            <input
+              type="text"
+              id="customerName"
+              placeholder="Your full name"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-row">
+
+
+            <div class="form-group">
+
+              <label for="phone">
+                Phone Number
+              </label>
+
+              <input
+                type="tel"
+                id="phone"
+                placeholder="514-000-0000"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="email">
+                Email
+              </label>
+
+              <input
+                type="email"
+                id="email"
+                placeholder="you@example.com"
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Fulfillment Method
+            </label>
+
+
+            <div class="fulfillment-grid">
+
+
+              <label class="fulfillment-card">
+
+                <input
+                  type="radio"
+                  name="fulfillment"
+                  value="Pickup"
+                  checked
+                >
+
+                <strong>Pickup</strong>
+
+                <span>
+                  Free
+                </span>
+
+              </label>
+
+
+              <label class="fulfillment-card">
+
+                <input
+                  type="radio"
+                  name="fulfillment"
+                  value="Delivery"
+                >
+
+                <strong>Delivery</strong>
+
+                <span>
+                  $8–$15 depending on distance
+                </span>
+
+              </label>
+
+
+              <label class="fulfillment-card">
+
+                <input
+                  type="radio"
+                  name="fulfillment"
+                  value="Meet Halfway"
+                >
+
+                <strong>Meet Halfway</strong>
+
+                <span>
+                  Location confirmed with you
+                </span>
+
+              </label>
+
+
+            </div>
+
+          </div>
+
+
+          <div
+            class="delivery-fee-selection"
+            id="deliveryFeeSelection"
+            style="display:none;"
+          >
+
+            <label for="deliveryFee">
+              Delivery Fee
+            </label>
+
+            <select id="deliveryFee">
+
+              <option value="8">
+                Local Delivery - $8
+              </option>
+
+              <option value="10">
+                Delivery - $10
+              </option>
+
+              <option value="12">
+                Delivery - $12
+              </option>
+
+              <option value="15">
+                Extended Delivery - $15
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="address">
+              Address / Meeting Area
+            </label>
+
+            <input
+              type="text"
+              id="address"
+              placeholder="Delivery address or meeting area"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="notes">
+              Special Instructions
+            </label>
+
+            <textarea
+              id="notes"
+              rows="5"
+              placeholder="Allergies, special requests, delivery notes..."
+            ></textarea>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="submit-order"
+          >
+            Submit Weekend Order
+          </button>
+
+
+        </form>
+
+      </div>
+
+
+      <!-- CART -->
+      <aside class="cart-box">
+
+
+        <div class="cart-heading">
+
+          <span>
+            YOUR WEEKEND ORDER
+          </span>
+
+          <h2>
+            Your Cart
+          </h2>
+
+        </div>
+
+
+        <div id="cartItems">
+
+          <p class="empty-cart">
+            Your order is currently empty.
+          </p>
+
+        </div>
+
+
+        <div
+          class="delivery-total-line"
+          id="deliveryTotalLine"
+          style="display:none;"
+        >
+
+          <span>Delivery</span>
+
+          <strong id="deliveryTotal">
+            $0.00
+          </strong>
+
+        </div>
+
+
+        <div class="cart-total">
+
+          <span>
+            ORDER TOTAL
+          </span>
+
+          <strong id="cartTotal">
+            $0.00
+          </strong>
+
+        </div>
+
+
+        <div class="cart-notice">
+
+          <strong>
+            Weekend Orders
+          </strong>
+
+          <p>
+            Orders close Thursday at 8 PM.
+            Saturday service is 2 PM – 6 PM.
+          </p>
+
+        </div>
+
+
+      </aside>
+
+
+    </div>
+
+  </section>
+
 
   <!-- CONTACT -->
-  <section class="contact-section" id="contact">
-    <h2>Oshuny Caribbean Catering</h2>
-    <p>Weekend Pre-Orders • Delivery • Pickup • Meet Halfway</p>
+  <section
+    class="contact-section"
+    id="contact"
+  >
+
+    <h2>
+      Oshuny Caribbean Catering
+    </h2>
+
+    <p>
+      Weekend Pre-Orders • Delivery • Pickup • Meet Halfway
+    </p>
 
     <div class="contact-links">
-      <a href="tel:5142957170">514-295-7170</a>
-      <a href="https://www.instagram.com/oshuny.catering" target="_blank">@oshuny.catering</a>
-      <a href="https://www.oshunycatering.com" target="_blank">www.oshunycatering.com</a>
+
+      <a href="tel:5142957170">
+        514-295-7170
+      </a>
+
+      <a
+        href="https://www.instagram.com/oshuny.catering"
+        target="_blank"
+      >
+        @oshuny.catering
+      </a>
+
+      <a
+        href="https://www.oshunycatering.com"
+        target="_blank"
+      >
+        www.oshunycatering.com
+      </a>
+
     </div>
+
   </section>
 
+
   <footer>
-    <p>© 2026 Oshuny Caribbean Catering • Authentic flavors. Made with love.</p>
+
+    <p>
+      © 2026 Oshuny Caribbean Catering
+      • Authentic flavors. Made with love.
+    </p>
+
   </footer>
 
+
   <script src="script.js"></script>
+
 </body>
+
 </html>
