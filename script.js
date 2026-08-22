@@ -1,11 +1,18 @@
 let cart = [];
+let selectedDeliveryFee = 0;
 
-// ===============================
-// ADD ITEM TO CART
-// ===============================
+const formspreeEndpoint =
+  "https://formspree.io/f/mppanypa";
+
+
+// =====================================
+// ADD NORMAL ITEM
+// =====================================
 
 function addToOrder(name, price) {
-  const existingItem = cart.find(item => item.name === name);
+
+  const existingItem =
+    cart.find(item => item.name === name);
 
   if (existingItem) {
     existingItem.quantity += 1;
@@ -19,119 +26,40 @@ function addToOrder(name, price) {
 
   updateCart();
 
-  // Scroll user toward the order section
-  const orderSection = document.getElementById("order");
+  const orderSection =
+    document.getElementById("order");
 
   if (orderSection) {
     orderSection.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
+      behavior: "smooth"
     });
   }
 }
 
 
-// ===============================
-// UPDATE CART DISPLAY
-// ===============================
+// =====================================
+// ADD OXTAIL WITH RICE CHOICE
+// =====================================
 
-function updateCart() {
-  const cartItems = document.getElementById("cartItems");
-  const cartTotal = document.getElementById("cartTotal");
+function addOxtail(size, price) {
 
-  if (!cartItems || !cartTotal) {
-    return;
-  }
+  const rice =
+    document.getElementById("oxtailRice").value;
 
-  if (cart.length === 0) {
-    cartItems.innerHTML = `
-      <p class="empty-cart">
-        Your order is currently empty.
-      </p>
-    `;
+  const name =
+    `Oxtail - ${size} - ${rice}`;
 
-    cartTotal.textContent = "$0.00";
-    return;
-  }
-
-  cartItems.innerHTML = "";
-
-  let total = 0;
-
-  cart.forEach((item, index) => {
-    const lineTotal = item.price * item.quantity;
-
-    total += lineTotal;
-
-    const cartItem = document.createElement("div");
-
-    cartItem.classList.add("cart-item");
-
-    cartItem.innerHTML = `
-      <div class="cart-item-left">
-
-        <div class="cart-item-name">
-          ${item.name}
-        </div>
-
-        <div class="quantity-controls">
-
-          <button
-            type="button"
-            onclick="changeQuantity(${index}, -1)"
-            aria-label="Decrease quantity"
-          >
-            −
-          </button>
-
-          <span>
-            ${item.quantity}
-          </span>
-
-          <button
-            type="button"
-            onclick="changeQuantity(${index}, 1)"
-            aria-label="Increase quantity"
-          >
-            +
-          </button>
-
-        </div>
-
-      </div>
-
-      <div class="cart-item-right">
-
-        <div class="cart-item-price">
-          $${lineTotal.toFixed(2)}
-        </div>
-
-        <button
-          type="button"
-          class="remove-btn"
-          onclick="removeItem(${index})"
-        >
-          Remove
-        </button>
-
-      </div>
-    `;
-
-    cartItems.appendChild(cartItem);
-  });
-
-  cartTotal.textContent = `$${total.toFixed(2)}`;
+  addToOrder(name, price);
 }
 
 
-// ===============================
+// =====================================
 // CHANGE QUANTITY
-// ===============================
+// =====================================
 
 function changeQuantity(index, amount) {
-  if (!cart[index]) {
-    return;
-  }
+
+  if (!cart[index]) return;
 
   cart[index].quantity += amount;
 
@@ -143,14 +71,13 @@ function changeQuantity(index, amount) {
 }
 
 
-// ===============================
+// =====================================
 // REMOVE ITEM
-// ===============================
+// =====================================
 
 function removeItem(index) {
-  if (!cart[index]) {
-    return;
-  }
+
+  if (!cart[index]) return;
 
   cart.splice(index, 1);
 
@@ -158,225 +85,523 @@ function removeItem(index) {
 }
 
 
-// ===============================
-// GET ORDER TOTAL
-// ===============================
+// =====================================
+// FOOD SUBTOTAL
+// =====================================
 
-function getOrderTotal() {
-  let total = 0;
+function getFoodTotal() {
 
-  cart.forEach(item => {
-    total += item.price * item.quantity;
-  });
-
-  return total;
+  return cart.reduce(
+    (total, item) =>
+      total + item.price * item.quantity,
+    0
+  );
 }
 
 
-// ===============================
-// CREATE ORDER SUMMARY
-// ===============================
+// =====================================
+// FINAL TOTAL
+// =====================================
+
+function getFinalTotal() {
+  return getFoodTotal() + selectedDeliveryFee;
+}
+
+
+// =====================================
+// CART DISPLAY
+// =====================================
+
+function updateCart() {
+
+  const cartItems =
+    document.getElementById("cartItems");
+
+  const cartTotal =
+    document.getElementById("cartTotal");
+
+  const deliveryLine =
+    document.getElementById("deliveryTotalLine");
+
+  const deliveryTotal =
+    document.getElementById("deliveryTotal");
+
+
+  if (!cartItems || !cartTotal) {
+    return;
+  }
+
+
+  if (cart.length === 0) {
+
+    cartItems.innerHTML = `
+      <p class="empty-cart">
+        Your order is currently empty.
+      </p>
+    `;
+
+  } else {
+
+    cartItems.innerHTML = "";
+
+    cart.forEach((item, index) => {
+
+      const lineTotal =
+        item.price * item.quantity;
+
+      const div =
+        document.createElement("div");
+
+      div.className = "cart-item";
+
+      div.innerHTML = `
+        <div class="cart-item-left">
+
+          <div class="cart-item-name">
+            ${item.name}
+          </div>
+
+          <div class="quantity-controls">
+
+            <button
+              type="button"
+              onclick="changeQuantity(${index}, -1)"
+            >
+              −
+            </button>
+
+            <span>
+              ${item.quantity}
+            </span>
+
+            <button
+              type="button"
+              onclick="changeQuantity(${index}, 1)"
+            >
+              +
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="cart-item-right">
+
+          <div class="cart-item-price">
+            $${lineTotal.toFixed(2)}
+          </div>
+
+          <button
+            type="button"
+            class="remove-btn"
+            onclick="removeItem(${index})"
+          >
+            Remove
+          </button>
+
+        </div>
+      `;
+
+      cartItems.appendChild(div);
+
+    });
+
+  }
+
+
+  if (deliveryLine && deliveryTotal) {
+
+    if (selectedDeliveryFee > 0) {
+
+      deliveryLine.style.display = "flex";
+
+      deliveryTotal.textContent =
+        `$${selectedDeliveryFee.toFixed(2)}`;
+
+    } else {
+
+      deliveryLine.style.display = "none";
+
+    }
+
+  }
+
+
+  cartTotal.textContent =
+    `$${getFinalTotal().toFixed(2)}`;
+}
+
+
+// =====================================
+// ORDER SUMMARY
+// =====================================
 
 function createOrderSummary() {
+
   let summary = "";
 
   cart.forEach(item => {
-    const lineTotal = item.price * item.quantity;
+
+    const amount =
+      item.price * item.quantity;
 
     summary +=
-      `${item.quantity} x ${item.name} - $${lineTotal.toFixed(2)}\n`;
+      `${item.quantity} x ${item.name} - $${amount.toFixed(2)}\n`;
+
   });
 
   return summary;
 }
 
 
-// ===============================
-// ORDER FORM
-// ===============================
+// =====================================
+// PAGE READY
+// =====================================
 
-document.addEventListener("DOMContentLoaded", function () {
-  const orderForm = document.getElementById("orderForm");
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
 
-  if (!orderForm) {
-    return;
-  }
 
-  orderForm.addEventListener("submit", function (event) {
-    event.preventDefault();
+    const orderForm =
+      document.getElementById("orderForm");
 
-    // Make sure food is selected
-    if (cart.length === 0) {
-      alert(
-        "Please add at least one menu item before submitting your order."
+    const deliverySelect =
+      document.getElementById("deliveryFee");
+
+    const deliverySection =
+      document.getElementById("deliveryFeeSelection");
+
+    const fulfillmentOptions =
+      document.querySelectorAll(
+        'input[name="fulfillment"]'
       );
 
-      return;
-    }
 
+    // =================================
+    // FULFILLMENT CHANGE
+    // =================================
 
-    // ===============================
-    // CUSTOMER INFO
-    // ===============================
+    fulfillmentOptions.forEach(option => {
 
-    const customerName =
-      document.getElementById("customerName").value.trim();
+      option.addEventListener(
+        "change",
+        function () {
 
-    const phone =
-      document.getElementById("phone").value.trim();
+          if (this.value === "Delivery") {
 
-    const email =
-      document.getElementById("email").value.trim();
+            if (deliverySection) {
+              deliverySection.style.display =
+                "block";
+            }
 
-    const address =
-      document.getElementById("address").value.trim();
+            if (deliverySelect) {
+              selectedDeliveryFee =
+                Number(deliverySelect.value);
+            }
 
-    const notes =
-      document.getElementById("notes").value.trim();
+          } else {
 
+            if (deliverySection) {
+              deliverySection.style.display =
+                "none";
+            }
 
-    const fulfillmentInput =
-      document.querySelector(
-        'input[name="fulfillment"]:checked'
+            selectedDeliveryFee = 0;
+          }
+
+          updateCart();
+        }
       );
 
-    const fulfillment =
-      fulfillmentInput
-        ? fulfillmentInput.value
-        : "Pickup";
+    });
 
 
-    // ===============================
-    // VALIDATION
-    // ===============================
+    // =================================
+    // DELIVERY FEE CHANGE
+    // =================================
 
-    if (customerName === "") {
-      alert("Please enter your full name.");
-      return;
-    }
+    if (deliverySelect) {
 
-    if (phone === "") {
-      alert("Please enter your phone number.");
-      return;
-    }
+      deliverySelect.addEventListener(
+        "change",
+        function () {
 
+          selectedDeliveryFee =
+            Number(this.value);
 
-    // If delivery is selected, require address
-    if (
-      fulfillment === "Delivery" &&
-      address === ""
-    ) {
-      alert(
-        "Please enter a delivery address."
+          updateCart();
+        }
       );
 
-      return;
     }
 
 
-    // If meet halfway, require location
-    if (
-      fulfillment === "Meet Halfway" &&
-      address === ""
-    ) {
-      alert(
-        "Please enter your preferred meeting area."
+    // =================================
+    // SUBMIT ORDER
+    // =================================
+
+    if (orderForm) {
+
+      orderForm.addEventListener(
+        "submit",
+        async function (event) {
+
+          event.preventDefault();
+
+
+          if (cart.length === 0) {
+
+            alert(
+              "Please add at least one item to your order."
+            );
+
+            return;
+          }
+
+
+          const customerName =
+            document
+              .getElementById("customerName")
+              .value
+              .trim();
+
+          const phone =
+            document
+              .getElementById("phone")
+              .value
+              .trim();
+
+          const email =
+            document
+              .getElementById("email")
+              .value
+              .trim();
+
+          const address =
+            document
+              .getElementById("address")
+              .value
+              .trim();
+
+          const notes =
+            document
+              .getElementById("notes")
+              .value
+              .trim();
+
+          const fulfillment =
+            document.querySelector(
+              'input[name="fulfillment"]:checked'
+            ).value;
+
+
+          // =================================
+          // VALIDATION
+          // =================================
+
+          if (customerName === "") {
+
+            alert(
+              "Please enter your full name."
+            );
+
+            return;
+          }
+
+
+          if (phone === "") {
+
+            alert(
+              "Please enter your phone number."
+            );
+
+            return;
+          }
+
+
+          if (
+            fulfillment === "Delivery" &&
+            address === ""
+          ) {
+
+            alert(
+              "Please enter your delivery address."
+            );
+
+            return;
+          }
+
+
+          if (
+            fulfillment === "Meet Halfway" &&
+            address === ""
+          ) {
+
+            alert(
+              "Please enter your preferred meeting area."
+            );
+
+            return;
+          }
+
+
+          // =================================
+          // TOTALS
+          // =================================
+
+          const foodTotal =
+            getFoodTotal();
+
+          const finalTotal =
+            getFinalTotal();
+
+          const summary =
+            createOrderSummary();
+
+
+          // =================================
+          // EMAIL DATA
+          // =================================
+
+          const emailData = {
+
+            subject:
+              `New Oshuny Weekend Order - ${customerName}`,
+
+            customer_name:
+              customerName,
+
+            customer_phone:
+              phone,
+
+            customer_email:
+              email || "Not provided",
+
+            fulfillment:
+              fulfillment,
+
+            address_or_meeting_area:
+              address || "Not required",
+
+            order_items:
+              summary,
+
+            food_subtotal:
+              `$${foodTotal.toFixed(2)}`,
+
+            delivery_fee:
+              `$${selectedDeliveryFee.toFixed(2)}`,
+
+            order_total:
+              `$${finalTotal.toFixed(2)}`,
+
+            special_instructions:
+              notes || "None",
+
+            order_cutoff:
+              "Thursday at 8 PM",
+
+            saturday_service:
+              "12 PM - 10 PM"
+          };
+
+
+          // =================================
+          // SEND EMAIL THROUGH FORMSPREE
+          // =================================
+
+          try {
+
+            const response =
+              await fetch(
+                formspreeEndpoint,
+                {
+                  method: "POST",
+
+                  headers: {
+                    "Content-Type":
+                      "application/json",
+
+                    "Accept":
+                      "application/json"
+                  },
+
+                  body:
+                    JSON.stringify(emailData)
+                }
+              );
+
+
+            if (!response.ok) {
+              throw new Error(
+                "Order submission failed."
+              );
+            }
+
+
+            // =================================
+            // SUCCESS MESSAGE
+            // =================================
+
+            alert(
+
+              `Thank you, ${customerName}!\n\n` +
+
+              `Your Oshuny weekend order has been submitted.\n\n` +
+
+              `Food: $${foodTotal.toFixed(2)}\n` +
+
+              `${
+                selectedDeliveryFee > 0
+                  ? `Delivery: $${selectedDeliveryFee.toFixed(2)}\n`
+                  : ""
+              }` +
+
+              `Total: $${finalTotal.toFixed(2)}\n\n` +
+
+              `Saturday service: 12 PM - 10 PM\n\n` +
+
+              `We will contact you at ${phone} to confirm your order.`
+            );
+
+
+            // =================================
+            // RESET ONLY AFTER SUCCESS
+            // =================================
+
+            cart = [];
+            selectedDeliveryFee = 0;
+
+            orderForm.reset();
+
+            if (deliverySection) {
+              deliverySection.style.display =
+                "none";
+            }
+
+            updateCart();
+
+
+          } catch (error) {
+
+            console.error(error);
+
+            alert(
+              "Your order could not be sent.\n\n" +
+              "Please try again or contact Oshuny Caribbean Catering at 514-295-7170."
+            );
+
+          }
+
+        }
       );
 
-      return;
     }
 
-
-    // ===============================
-    // ORDER INFORMATION
-    // ===============================
-
-    const total =
-      getOrderTotal();
-
-    const orderSummary =
-      createOrderSummary();
-
-
-    // ===============================
-    // FULL ORDER MESSAGE
-    // ===============================
-
-    const fullOrder = `
-OSHUNY CARIBBEAN CATERING
---------------------------------
-
-CUSTOMER INFORMATION
-
-Name:
-${customerName}
-
-Phone:
-${phone}
-
-Email:
-${email || "Not provided"}
-
-FULFILLMENT
-
-${fulfillment}
-
-Address / Meeting Area:
-${address || "Not required"}
-
-ORDER
---------------------------------
-
-${orderSummary}
-
-TOTAL:
-$${total.toFixed(2)}
-
-SPECIAL INSTRUCTIONS
-
-${notes || "None"}
-
---------------------------------
-Weekend Pre-Order
-Orders close Thursday at 8 PM
-Saturday Service: 2 PM - 6 PM
-    `;
-
-
-    // For testing in browser console
-    console.log(fullOrder);
-
-
-    // ===============================
-    // SUCCESS MESSAGE
-    // ===============================
-
-    alert(
-      `Thank you, ${customerName}!\n\n` +
-      `Your Oshuny pre-order has been created.\n\n` +
-      `Order Total: $${total.toFixed(2)}\n` +
-      `Fulfillment: ${fulfillment}\n\n` +
-      `We will contact you at ${phone} to confirm your order.`
-    );
-
-
-    // ===============================
-    // RESET ORDER
-    // ===============================
-
-    cart = [];
 
     updateCart();
 
-    orderForm.reset();
-  });
-});
-
-
-// ===============================
-// AUTO UPDATE CART WHEN PAGE LOADS
-// ===============================
-
-document.addEventListener("DOMContentLoaded", function () {
-  updateCart();
-});
+  }
+);
