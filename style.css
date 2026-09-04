@@ -236,6 +236,10 @@ img {
    HERO
 ===================================== */
 
+/* =====================================
+   HERO WITH TROPICAL LEAVES
+===================================== */
+
 .hero {
   position: relative;
 
@@ -246,9 +250,114 @@ img {
 
   padding: 70px 6%;
 
+  overflow: hidden;
+
   background:
     url("Images/jerk.png")
     center center / cover no-repeat;
+}
+
+
+/* DARK OVERLAY */
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.92) 0%,
+      rgba(0, 0, 0, 0.80) 35%,
+      rgba(0, 0, 0, 0.52) 70%,
+      rgba(0, 0, 0, 0.35) 100%
+    ),
+
+    repeating-linear-gradient(
+      135deg,
+      rgba(24, 115, 59, 0.08) 0px,
+      rgba(24, 115, 59, 0.08) 16px,
+
+      rgba(216, 163, 33, 0.05) 16px,
+      rgba(216, 163, 33, 0.05) 32px,
+
+      rgba(182, 43, 43, 0.04) 32px,
+      rgba(182, 43, 43, 0.04) 48px,
+
+      transparent 48px,
+      transparent 64px
+    );
+}
+
+
+/* =====================================
+   TROPICAL LEAF DECORATIONS
+===================================== */
+
+.hero::before,
+.hero::after {
+  content: "";
+
+  position: absolute;
+
+  z-index: 2;
+
+  width: 260px;
+  height: 260px;
+
+  opacity: 0.28;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(39, 120, 55, 0.95) 0%,
+      rgba(24, 115, 59, 0.85) 45%,
+      transparent 72%
+    );
+
+  border-radius:
+    70% 30% 70% 30%;
+}
+
+
+/* TOP RIGHT LEAF */
+
+.hero::before {
+  top: -80px;
+  right: -70px;
+
+  transform:
+    rotate(28deg)
+    skewX(-12deg);
+}
+
+/* BOTTOM LEFT LEAF */
+
+.hero::after {
+  bottom: -110px;
+  left: -90px;
+
+  transform:
+    rotate(-35deg)
+    skewX(10deg);
+
+  opacity: 0.22;
+}
+
+
+/* HERO CONTENT STAYS ABOVE */
+
+.hero-content {
+  position: relative;
+
+  z-index: 3;
+
+  max-width: 720px;
 }
 
 
