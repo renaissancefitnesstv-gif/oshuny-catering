@@ -7,6 +7,11 @@
 
   <title>Oshuny Caribbean Catering</title>
 
+  <meta
+    name="description"
+    content="Authentic Caribbean catering in Montreal. Order jerk chicken, curry chicken, oxtail, ackee and saltfish, Rasta Pasta, rice and peas, plantain, and festivals."
+  >
+
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,7 +19,7 @@
 
   <!-- TOP BAR -->
   <div class="top-bar">
-    Weekend Pre-Orders Only • Orders Close Thursday at 8 PM • Saturday Delivery $8–$15
+    Order Online • Pickup • Delivery $8–$15 • Meet Halfway Available
   </div>
 
 
@@ -29,7 +34,7 @@
     <nav>
       <a href="#home">Home</a>
       <a href="#menu">Menu</a>
-      <a href="#order">Pre-Order</a>
+      <a href="#order">Order</a>
       <a href="#delivery">Delivery</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -49,7 +54,7 @@
     <div class="hero-content">
 
       <p class="hero-badge">
-        WEEKEND CARIBBEAN SERVICE • MONTRÉAL
+        AUTHENTIC CARIBBEAN FOOD • MONTRÉAL
       </p>
 
       <h2>
@@ -58,15 +63,15 @@
       </h2>
 
       <p class="hero-text">
-        Authentic Caribbean food prepared fresh for your weekend.
-        Choose your plate size, place your pre-order, and select
-        pickup, delivery, or meet halfway.
+        Authentic Caribbean food prepared fresh to order.
+        Choose your plate size, add your favorites,
+        and select pickup, delivery, or meet halfway.
       </p>
 
       <div class="hero-buttons">
 
         <a href="#menu" class="gold-btn">
-          View Weekend Menu
+          View Menu
         </a>
 
         <a href="#order" class="outline-btn">
@@ -76,9 +81,9 @@
       </div>
 
       <div class="hero-info">
-        <span>Orders close Thursday at 8 PM</span>
-        <span>Saturday service: 12 PM – 10 PM</span>
+        <span>Pickup Available</span>
         <span>Delivery: $8–$15</span>
+        <span>Meet Halfway Available</span>
       </div>
 
     </div>
@@ -91,12 +96,12 @@
 
     <div class="section-header">
 
-      <span>OUR WEEKEND MENU</span>
+      <span>OUR MENU</span>
 
       <h2>Choose Your Plate</h2>
 
       <p>
-        Select Medium or Large and add your meal to the weekend order.
+        Select your size and add your meal to your order.
       </p>
 
     </div>
@@ -130,12 +135,14 @@
           <div class="size-buttons">
 
             <button
+              type="button"
               onclick="addToOrder('Curry Chicken - Medium', 15)"
             >
               Medium $15
             </button>
 
             <button
+              type="button"
               onclick="addToOrder('Curry Chicken - Large', 20)"
             >
               Large $20
@@ -173,12 +180,14 @@
           <div class="size-buttons">
 
             <button
+              type="button"
               onclick="addToOrder('Jerk Chicken - Medium', 17)"
             >
               Medium $17
             </button>
 
             <button
+              type="button"
               onclick="addToOrder('Jerk Chicken - Large', 20)"
             >
               Large $20
@@ -229,11 +238,17 @@
 
           <div class="size-buttons">
 
-            <button onclick="addOxtail('Medium', 18)">
+            <button
+              type="button"
+              onclick="addOxtail('Medium', 18)"
+            >
               Medium $18
             </button>
 
-            <button onclick="addOxtail('Large', 25)">
+            <button
+              type="button"
+              onclick="addOxtail('Large', 25)"
+            >
               Large $25
             </button>
 
@@ -269,15 +284,63 @@
           <div class="size-buttons">
 
             <button
+              type="button"
               onclick="addToOrder('Ackee & Saltfish - Medium', 17)"
             >
               Medium $17
             </button>
 
             <button
+              type="button"
               onclick="addToOrder('Ackee & Saltfish - Large', 21)"
             >
               Large $21
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- RASTA PASTA -->
+      <article class="menu-card">
+
+        <img
+          src="Images/rasta-pasta.png"
+          alt="Rasta Pasta with Chicken"
+        >
+
+        <div class="menu-card-body">
+
+          <h3>Rasta Pasta with Chicken</h3>
+
+          <p>
+            Creamy Caribbean-style penne pasta
+            with seasoned chicken, bell peppers,
+            and house spices.
+          </p>
+
+          <div class="size-prices">
+            <span>Medium <strong>$14</strong></span>
+            <span>Large <strong>$24</strong></span>
+          </div>
+
+          <div class="size-buttons">
+
+            <button
+              type="button"
+              onclick="addToOrder('Rasta Pasta with Chicken - Medium', 14)"
+            >
+              Medium $14
+            </button>
+
+            <button
+              type="button"
+              onclick="addToOrder('Rasta Pasta with Chicken - Large', 24)"
+            >
+              Large $24
             </button>
 
           </div>
@@ -311,6 +374,7 @@
           <div class="size-buttons">
 
             <button
+              type="button"
               onclick="addToOrder('Jamaican Festivals', 5)"
             >
               Add $5
@@ -347,6 +411,7 @@
           <div class="size-buttons">
 
             <button
+              type="button"
               onclick="addToOrder('Extra Rice & Peas', 7)"
             >
               Add $7
@@ -357,83 +422,45 @@
         </div>
 
       </article>
-<!-- SWEET PLANTAIN -->
-<article class="menu-card">
 
-  <img
-    src="Images/plantain.png"
-    alt="Sweet Plantain"
-  >
 
-  <div class="menu-card-body">
+      <!-- SWEET PLANTAIN -->
+      <article class="menu-card">
 
-    <h3>Sweet Plantain</h3>
+        <img
+          src="Images/plantain.png"
+          alt="Sweet Plantain"
+        >
 
-    <p>
-      Golden fried ripe plantain.
-      Sweet, caramelized, and perfect as a side.
-    </p>
+        <div class="menu-card-body">
 
-    <div class="size-prices">
-      <span>Side <strong>$5</strong></span>
-    </div>
+          <h3>Sweet Plantain</h3>
 
-    <div class="size-buttons">
-      <button
-        type="button"
-        onclick="addToOrder('Sweet Plantain', 5)"
-      >
-        Add $5
-      </button>
-    </div>
+          <p>
+            Golden fried ripe plantain.
+            Sweet, caramelized, and perfect as a side.
+          </p>
 
-  </div>
+          <div class="size-prices">
+            <span>Side <strong>$5</strong></span>
+          </div>
 
-</article>
-<!-- RASTA PASTA -->
-<article class="menu-card">
+          <div class="size-buttons">
 
-  <img
-    src="Images/rasta-pasta.png"
-    alt="Rasta Pasta with Chicken"
-  >
+            <button
+              type="button"
+              onclick="addToOrder('Sweet Plantain', 5)"
+            >
+              Add $5
+            </button>
 
-  <div class="menu-card-body">
+          </div>
 
-    <h3>Rasta Pasta with Chicken</h3>
+        </div>
 
-    <p>
-      Creamy Caribbean-style penne pasta
-      with seasoned chicken, bell peppers,
-      and house spices.
-    </p>
+      </article>
 
-    <div class="size-prices">
-      <span>Medium <strong>$14</strong></span>
-      <span>Large <strong>$24</strong></span>
-    </div>
 
-    <div class="size-buttons">
-
-      <button
-        type="button"
-        onclick="addToOrder('Rasta Pasta with Chicken - Medium', 14)"
-      >
-        Medium $14
-      </button>
-
-      <button
-        type="button"
-        onclick="addToOrder('Rasta Pasta with Chicken - Large', 24)"
-      >
-        Large $24
-      </button>
-
-    </div>
-
-  </div>
-
-</article>
     </div>
 
   </section>
@@ -444,34 +471,46 @@
 
     <div class="delivery-box">
 
-      <h2>Weekend Delivery</h2>
+      <h2>Pickup & Delivery</h2>
 
       <div class="delivery-grid">
 
         <div class="delivery-card">
+
           <h3>Pickup</h3>
+
           <p>
-            Pickup is free. Your pickup details
-            will be confirmed with your order.
+            Pickup is free.
+            Your pickup details will be confirmed
+            after your order is submitted.
           </p>
+
         </div>
 
+
         <div class="delivery-card">
+
           <h3>Delivery</h3>
+
           <p>
-            Saturday delivery is available.
-            Delivery fees range from
+            Delivery is available.
+            Fees range from
             <strong>$8 to $15</strong>
             depending on distance.
           </p>
+
         </div>
 
+
         <div class="delivery-card">
+
           <h3>Meet Halfway</h3>
+
           <p>
-            A convenient halfway meeting location
+            A convenient meeting location
             can be arranged when appropriate.
           </p>
+
         </div>
 
       </div>
@@ -488,10 +527,11 @@
 
       <span>COMPLETE YOUR ORDER</span>
 
-      <h2>Weekend Pre-Order</h2>
+      <h2>Place Your Order</h2>
 
       <p>
         Review your cart and enter your contact information.
+        We will contact you to confirm availability and details.
       </p>
 
     </div>
@@ -579,9 +619,7 @@
 
                 <strong>Pickup</strong>
 
-                <span>
-                  Free
-                </span>
+                <span>Free</span>
 
               </label>
 
@@ -692,7 +730,7 @@
             type="submit"
             class="submit-order"
           >
-            Submit Weekend Order
+            Submit Order
           </button>
 
 
@@ -708,7 +746,7 @@
         <div class="cart-heading">
 
           <span>
-            YOUR WEEKEND ORDER
+            YOUR ORDER
           </span>
 
           <h2>
@@ -758,12 +796,13 @@
         <div class="cart-notice">
 
           <strong>
-            Weekend Orders
+            Order Confirmation
           </strong>
 
           <p>
-            Orders close Thursday at 8 PM.
-            Saturday service is 12 PM – 10 PM.
+            Submit your order and we will contact you
+            to confirm availability, pickup, delivery,
+            or meeting arrangements.
           </p>
 
         </div>
@@ -788,7 +827,7 @@
     </h2>
 
     <p>
-      Weekend Pre-Orders • Delivery • Pickup • Meet Halfway
+      Caribbean Catering • Delivery • Pickup • Meet Halfway
     </p>
 
     <div class="contact-links">
