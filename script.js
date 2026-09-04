@@ -104,6 +104,7 @@ function getFoodTotal() {
 // =====================================
 
 function getFinalTotal() {
+
   return getFoodTotal() + selectedDeliveryFee;
 }
 
@@ -204,9 +205,7 @@ function updateCart() {
       `;
 
       cartItems.appendChild(div);
-
     });
-
   }
 
 
@@ -222,9 +221,7 @@ function updateCart() {
     } else {
 
       deliveryLine.style.display = "none";
-
     }
-
   }
 
 
@@ -234,7 +231,7 @@ function updateCart() {
 
 
 // =====================================
-// ORDER SUMMARY
+// CREATE ORDER SUMMARY
 // =====================================
 
 function createOrderSummary() {
@@ -248,7 +245,6 @@ function createOrderSummary() {
 
     summary +=
       `${item.quantity} x ${item.name} - $${amount.toFixed(2)}\n`;
-
   });
 
   return summary;
@@ -314,7 +310,6 @@ document.addEventListener(
           updateCart();
         }
       );
-
     });
 
 
@@ -334,7 +329,6 @@ document.addEventListener(
           updateCart();
         }
       );
-
     }
 
 
@@ -391,10 +385,24 @@ document.addEventListener(
               .value
               .trim();
 
-          const fulfillment =
+          const fulfillmentOption =
             document.querySelector(
               'input[name="fulfillment"]:checked'
-            ).value;
+            );
+
+
+          if (!fulfillmentOption) {
+
+            alert(
+              "Please choose pickup, delivery, or meet halfway."
+            );
+
+            return;
+          }
+
+
+          const fulfillment =
+            fulfillmentOption.value;
 
 
           // =================================
@@ -462,13 +470,13 @@ document.addEventListener(
 
 
           // =================================
-          // EMAIL DATA
+          // ORDER EMAIL DATA
           // =================================
 
           const emailData = {
 
             subject:
-              `New Oshuny Weekend Order - ${customerName}`,
+              `New Oshuny Order - ${customerName}`,
 
             customer_name:
               customerName,
@@ -498,18 +506,12 @@ document.addEventListener(
               `$${finalTotal.toFixed(2)}`,
 
             special_instructions:
-              notes || "None",
-
-            order_cutoff:
-              "Thursday at 8 PM",
-
-            saturday_service:
-              "12 PM - 10 PM"
+              notes || "None"
           };
 
 
           // =================================
-          // SEND EMAIL THROUGH FORMSPREE
+          // SEND THROUGH FORMSPREE
           // =================================
 
           try {
@@ -535,6 +537,7 @@ document.addEventListener(
 
 
             if (!response.ok) {
+
               throw new Error(
                 "Order submission failed."
               );
@@ -549,7 +552,7 @@ document.addEventListener(
 
               `Thank you, ${customerName}!\n\n` +
 
-              `Your Oshuny weekend order has been submitted.\n\n` +
+              `Your Oshuny order has been submitted.\n\n` +
 
               `Food: $${foodTotal.toFixed(2)}\n` +
 
@@ -561,25 +564,27 @@ document.addEventListener(
 
               `Total: $${finalTotal.toFixed(2)}\n\n` +
 
-              `Saturday service: 12 PM - 10 PM\n\n` +
-
-              `We will contact you at ${phone} to confirm your order.`
+              `We will contact you at ${phone} to confirm availability and your order details.`
             );
 
 
             // =================================
-            // RESET ONLY AFTER SUCCESS
+            // RESET AFTER SUCCESS
             // =================================
 
             cart = [];
+
             selectedDeliveryFee = 0;
 
             orderForm.reset();
 
+
             if (deliverySection) {
+
               deliverySection.style.display =
                 "none";
             }
+
 
             updateCart();
 
@@ -592,12 +597,10 @@ document.addEventListener(
               "Your order could not be sent.\n\n" +
               "Please try again or contact Oshuny Caribbean Catering at 514-295-7170."
             );
-
           }
 
         }
       );
-
     }
 
 
