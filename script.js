@@ -252,6 +252,28 @@ function createOrderSummary() {
 
 
 // =====================================
+// 24-HOUR VALIDATION
+// =====================================
+
+function isAtLeast24HoursAway(dateValue, timeValue) {
+
+  const requestedDateTime =
+    new Date(`${dateValue}T${timeValue}`);
+
+  const now =
+    new Date();
+
+  const difference =
+    requestedDateTime.getTime() - now.getTime();
+
+  const twentyFourHours =
+    24 * 60 * 60 * 1000;
+
+  return difference >= twentyFourHours;
+}
+
+
+// =====================================
 // PAGE READY
 // =====================================
 
@@ -273,6 +295,43 @@ document.addEventListener(
       document.querySelectorAll(
         'input[name="fulfillment"]'
       );
+
+    const orderDate =
+      document.getElementById("orderDate");
+
+    const orderTime =
+      document.getElementById("orderTime");
+
+
+    // =================================
+    // SET MINIMUM DATE
+    // =================================
+
+    if (orderDate) {
+
+      const tomorrow =
+        new Date();
+
+      tomorrow.setDate(
+        tomorrow.getDate() + 1
+      );
+
+      const year =
+        tomorrow.getFullYear();
+
+      const month =
+        String(
+          tomorrow.getMonth() + 1
+        ).padStart(2, "0");
+
+      const day =
+        String(
+          tomorrow.getDate()
+        ).padStart(2, "0");
+
+      orderDate.min =
+        `${year}-${month}-${day}`;
+    }
 
 
     // =================================
@@ -385,11 +444,25 @@ document.addEventListener(
               .value
               .trim();
 
+          const requestedDate =
+            document
+              .getElementById("orderDate")
+              .value;
+
+          const requestedTime =
+            document
+              .getElementById("orderTime")
+              .value;
+
           const fulfillmentOption =
             document.querySelector(
               'input[name="fulfillment"]:checked'
             );
 
+
+          // =================================
+          // VALIDATION
+          // =================================
 
           if (!fulfillmentOption) {
 
@@ -404,10 +477,6 @@ document.addEventListener(
           const fulfillment =
             fulfillmentOption.value;
 
-
-          // =================================
-          // VALIDATION
-          // =================================
 
           if (customerName === "") {
 
@@ -455,6 +524,34 @@ document.addEventListener(
           }
 
 
+          if (
+            requestedDate === "" ||
+            requestedTime === ""
+          ) {
+
+            alert(
+              "Please select your requested date and time."
+            );
+
+            return;
+          }
+
+
+          if (
+            !isAtLeast24HoursAway(
+              requestedDate,
+              requestedTime
+            )
+          ) {
+
+            alert(
+              "Orders must be placed at least 24 hours in advance. Please choose a later date or time."
+            );
+
+            return;
+          }
+
+
           // =================================
           // TOTALS
           // =================================
@@ -470,7 +567,7 @@ document.addEventListener(
 
 
           // =================================
-          // ORDER EMAIL DATA
+          // EMAIL DATA
           // =================================
 
           const emailData = {
@@ -486,6 +583,12 @@ document.addEventListener(
 
             customer_email:
               email || "Not provided",
+
+            requested_date:
+              requestedDate,
+
+            requested_time:
+              requestedTime,
 
             fulfillment:
               fulfillment,
@@ -506,7 +609,10 @@ document.addEventListener(
               `$${finalTotal.toFixed(2)}`,
 
             special_instructions:
-              notes || "None"
+              notes || "None",
+
+            notice:
+              "Customer selected a date/time at least 24 hours in advance."
           };
 
 
@@ -552,7 +658,11 @@ document.addEventListener(
 
               `Thank you, ${customerName}!\n\n` +
 
-              `Your Oshuny order has been submitted.\n\n` +
+              `Your Oshuny order request has been submitted.\n\n` +
+
+              `Requested Date: ${requestedDate}\n` +
+
+              `Requested Time: ${requestedTime}\n\n` +
 
               `Food: $${foodTotal.toFixed(2)}\n` +
 
