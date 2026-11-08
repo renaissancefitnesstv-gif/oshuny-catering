@@ -200,63 +200,52 @@
       </article>
 
 
-      <!-- OXTAIL -->
-      <article class="menu-card">
+ <!-- FRIED CHICKEN -->
+<article class="menu-card">
+  <img
+    src="Images/fried-chicken.png"
+    alt="Fried Chicken"
+  >
 
-        <img
-          src="Images/oxtail.png"
-          alt="Oxtail"
-        >
+  <div class="menu-card-body">
+    <h3>Fried Chicken</h3>
 
-        <div class="menu-card-body">
+    <p>
+      Crispy Caribbean-style fried chicken served with
+      white rice or rice & peas and plantains.
+    </p>
 
-          <h3>Oxtail</h3>
+    <div class="size-prices">
+      <span>Medium <strong>$18</strong></span>
+      <span>Large <strong>$25</strong></span>
+    </div>
 
-          <p>
-            Slow-braised Caribbean oxtail with
-            white rice or rice & peas and plantains.
-          </p>
+    <label class="rice-label" for="friedChickenRice">
+      Choose Rice
+    </label>
 
-          <div class="size-prices">
-            <span>Medium <strong>$18</strong></span>
-            <span>Large <strong>$25</strong></span>
-          </div>
+    <select id="friedChickenRice" class="rice-select">
+      <option value="White Rice">White Rice</option>
+      <option value="Rice & Peas">Rice & Peas</option>
+    </select>
 
-          <label class="rice-label" for="oxtailRice">
-            Choose Rice
-          </label>
+    <div class="size-buttons">
+      <button
+        type="button"
+        onclick="addToOrder('Fried Chicken - Medium (' + document.getElementById('friedChickenRice').value + ')', 18)"
+      >
+        Medium $18
+      </button>
 
-          <select id="oxtailRice" class="rice-select">
-            <option value="White Rice">
-              White Rice
-            </option>
-
-            <option value="Rice & Peas">
-              Rice & Peas
-            </option>
-          </select>
-
-          <div class="size-buttons">
-
-            <button
-              type="button"
-              onclick="addOxtail('Medium', 18)"
-            >
-              Medium $18
-            </button>
-
-            <button
-              type="button"
-              onclick="addOxtail('Large', 25)"
-            >
-              Large $25
-            </button>
-
-          </div>
-
-        </div>
-
-      </article>
+      <button
+        type="button"
+        onclick="addToOrder('Fried Chicken - Large (' + document.getElementById('friedChickenRice').value + ')', 25)"
+      >
+        Large $25
+      </button>
+    </div>
+  </div>
+</article>
 
 
       <!-- ACKEE -->
